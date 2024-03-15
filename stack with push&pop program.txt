@@ -1,0 +1,113 @@
+Develop a  C# Program to Implement Stack with Push and Pop Operations [Hint: Use class, get/set properties, methods for push and pop and main method]
+using System;
+
+class Stack
+{
+    private int[] array;
+    private int top;
+    private int capacity;
+
+    // Constructor
+    public Stack(int size)
+    {
+        capacity = size;
+        array = new int[capacity];
+        top = -1;
+    }
+
+    // Push operation to insert an element into the stack
+    public void Push(int item)
+    {
+        if (top == capacity - 1)
+        {
+            Console.WriteLine("Stack Overflow. Cannot push more elements.");
+            return;
+        }
+
+        array[++top] = item;
+        Console.WriteLine(item + " pushed into stack");
+    }
+
+    // Pop operation to remove an element from the stack
+    public int Pop()
+    {
+        if (top == -1)
+        {
+            Console.WriteLine("Stack Underflow. Cannot pop from an empty stack.");
+            return -1;
+        }
+
+        int poppedItem = array[top--];
+        Console.WriteLine(poppedItem + " popped from stack");
+        return poppedItem;
+    }
+
+    // Method to display the contents of the stack
+    public void DisplayStack()
+    {
+        if (top == -1)
+        {
+            Console.WriteLine("Stack is empty");
+            return;
+        }
+
+        Console.WriteLine("Elements in the stack:");
+        for (int i = top; i >= 0; i--)
+        {
+            Console.WriteLine(array[i]);
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+     Stack stack = new Stack(5); // Creating a stack with capacity of 5
+
+        // Pushing elements into the stack
+        stack.Push(10);
+        stack.Push(20);
+        stack.Push(30);
+        stack.Push(40);
+        stack.Push(50);
+
+        // Displaying the stack
+        stack.DisplayStack();
+
+        // Popping elements from the stack
+        stack.Pop();
+        stack.Pop();
+
+        // Displaying the stack after popping elements
+        stack.DisplayStack();
+    }
+}
+
+
+
+
+Output:
+10 pushed into stack
+20 pushed into stack
+30 pushed into stack
+40 pushed into stack
+50 pushed into stack
+Elements in the stack:
+50
+40
+30
+20
+10
+50 popped from stack
+40 popped from stack
+Elements in the stack:
+30
+20
+10
+
+
+
+
+
+
